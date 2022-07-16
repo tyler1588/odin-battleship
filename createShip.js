@@ -2,18 +2,23 @@ export default function createShip(length){
 
     const placesHit = [];
     for (let i = 0; i < length; i++){
-        placesHit.push('Not Hit');
+        placesHit.push('not hit');
     }
 
-    let sunk = true;
-
-    if (placesHit.includes('Not Hit')){
-        sunk = false;
-    }
-    
     return {
         length: length,
         placesHit: placesHit,
-        sunk: sunk
+        isSunk(){
+            let sunk = true;
+            if (placesHit.includes('not hit')){
+                sunk = false;
+            }
+            return sunk
+        },
+        attack(position){
+            if (position < placesHit.length){
+                placesHit[position] = 'hit';
+            }
+        }
     }
 }
