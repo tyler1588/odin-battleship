@@ -1,0 +1,1 @@
+!function(){const e=document.getElementById("container"),n=document.createElement("h1");n.innerHTML="hello, webpack",e.appendChild(n)}();
