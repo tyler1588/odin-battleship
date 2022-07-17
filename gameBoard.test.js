@@ -30,6 +30,16 @@ test('array captures areas attacked', () => {
     Board.placeShip(0,0,2);
     Board.receieveAttack(0,0);
     Board.receieveAttack(0,1);
-    expect(Board.placesHit).toEqual([[0,0],[0,1]]);
+    expect(Board.placesAttacked).toEqual([{'x': 0, 'y': 0}, {'x': 0, 'y': 1}]);
+    expect(Board.receieveAttack(0,1)).toBe('already attacked');
 });
+
+
+test('array registers missed attack', () => {
+    const Board = gameBoard();
+    Board.receieveAttack(0,0);
+    expect(Board.board[0][0]).toBe('miss');
+    expect(Board.placesAttacked).toEqual([{'x': 0, 'y': 0}]);
+    expect(Board.receieveAttack(0,0)).toBe('already attacked');
+})
 
