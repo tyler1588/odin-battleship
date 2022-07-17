@@ -15,6 +15,7 @@ export default function gameBoard(){
     ]
 
     const placesAttacked = [];
+    const shipLocations = [];
 
     return {
         board: board,
@@ -25,6 +26,7 @@ export default function gameBoard(){
                 for (let i = 0; i < ship.length; i++){
                     board[x][y+i] = ship;
                 }
+                shipLocations.push({'x': x, 'y': y});
             }
         },
         receieveAttack(x,y){
@@ -43,6 +45,17 @@ export default function gameBoard(){
                 placesAttacked.push({'x': x, 'y': y});
                 return ('hit');
             }
+        },
+        allShipsSunk(){
+            let sunk = true;
+            for (let i = 0; i < shipLocations.length; i++){
+                const xCord = shipLocations[i].x;
+                const yCord = shipLocations[i].y;
+                if (board[xCord][yCord].isSunk() === false){
+                    sunk = false
+                }
+            }
+            return sunk
         }
     }
 }

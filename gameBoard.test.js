@@ -43,3 +43,15 @@ test('array registers missed attack', () => {
     expect(Board.receieveAttack(0,0)).toBe('already attacked');
 })
 
+test('check if all ships are sunk', () => {
+    const Board = gameBoard();
+    Board.placeShip(0,0,1);
+    Board.placeShip(1,1,1);
+    expect(Board.allShipsSunk()).toEqual(false);
+    Board.receieveAttack(0,0);
+    expect(Board.allShipsSunk()).toEqual(false);
+    Board.receieveAttack(1,1);
+    expect(Board.allShipsSunk()).toEqual(true);
+})
+
+
