@@ -14,11 +14,11 @@ export default function gameBoard(){
         ['', '', '', '', '', '', '', '', '', '']
     ]
 
-    const placesHit = [];
+    const placesAttacked = [];
 
     return {
         board: board,
-        placesHit: placesHit,
+        placesAttacked: placesAttacked,
         placeShip(x,y,length){
             const ship = createShip(length);
             if (x >= 0 && y >= 0 && (y + ship.length) < 11){
@@ -28,15 +28,21 @@ export default function gameBoard(){
             }
         },
         receieveAttack(x,y){
-            if (board[x][y] === 'hit' || board[x][y] === 'miss'){
-                return
-            } 
+            if (placesAttacked.some(e => (e.x === x && e.y === y))) {
+                return ('already attacked');
+            }
+
+            if (board[x][y] === ''){
+                board[x][y] = 'miss';
+                placesAttacked.push({'x': x, 'y': y});
+                return ('miss');
+            }
 
             if (board[x][y] != ''){
                 board[x][y].attack();
-                placesHit.push([x,y]);
+                placesAttacked.push({'x': x, 'y': y});
+                return ('hit');
             }
-        
         }
     }
 }
