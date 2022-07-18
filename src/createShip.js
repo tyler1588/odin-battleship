@@ -2,6 +2,7 @@ export default function createShip(length){
     let timesHit = 0;
     return {
         length: length,
+        name: 'ship',
         isSunk(){
             let sunk = false;
             if (timesHit === length){

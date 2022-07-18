@@ -22,7 +22,7 @@ export default function gameBoard(){
         placesAttacked: placesAttacked,
         placeShip(x,y,length){
             const ship = createShip(length);
-            if (x >= 0 && y >= 0 && (y + ship.length) < 11){
+            if (x >= 0 && x < 10 && y >= 0 && (y + ship.length) < 11){
                 for (let i = 0; i < ship.length; i++){
                     board[x][y+i] = ship;
                 }
