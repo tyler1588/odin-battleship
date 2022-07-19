@@ -33,5 +33,5 @@ test('human player has a game board', () => {
 
 test('human player board can receive attack', () => {
     const player1 = player('human');
-    expect(player1.attack()).toEqual('miss');
+    expect(player1.attack()[0]).toEqual('miss');
 })
