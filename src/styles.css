@@ -6,19 +6,45 @@
 .gameboard {
     padding-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(10, 50px);
-    grid-template-rows: repeat(10, 50px);
-    width: 50%;
+    grid-template-columns: repeat(10, 4vw);
+    grid-template-rows: repeat(10, 4vw);
+    width: 100%;
     justify-content: center;
 }
 
 .gameboard > div {
-    background-color: black;
+    background-color: #00009d;
     border-style: solid;
     border-color: white;
     border-width: 1px;
+    transition: 0.5s;
+}
+
+.gameboard > div:hover, .ship:hover {
+    background-color: lightgrey !important;
+    transition: 0.3s;
 }
 
 .ship {
     background-color: grey !important;
+    transition: 0.5s;
+}
+
+.miss {
+    background-color: yellow !important;
+}
+
+.hit {
+    background-color: red !important;
+}
+
+@media only screen and (max-width: 768px) {
+    #container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .gameboard {
+        grid-template-columns: repeat(10, 8vw);
+        grid-template-rows: repeat(10, 8vw);
+    }
 }
