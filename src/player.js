@@ -27,7 +27,7 @@ export default function player(type){
                     randomInt = getRandomInt();
                     attack = Board.receieveAttack(randomInt.randX, randomInt.randY);
                 }
-                return attack
+                return [attack,randomInt.randX,randomInt.randY]
             }
         },
         shipsSunk(){
