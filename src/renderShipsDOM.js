@@ -12,13 +12,6 @@ export default function renderShipsDOM(){
         }
     }
 
-    for (let i = 0; i < 10; i++){
-        for (let j = 0; j < 10; j++){
-            if (player2Logic.board[i][j].name === 'ship'){
-                const ship = document.getElementsByClassName('x'+i+' y'+j+' player2')[0];
-                ship.classList.add('ship');
-            }
-        }
-    }
+
     
 }

@@ -2,6 +2,7 @@ import player from './player';
 import gameBoardDOM from './gameBoardDOM';
 import attackDOM from './attackDOM';
 import renderShipsDOM from './renderShipsDOM';
+import gameOver from './gameOver';
 
 const player1Logic = player('human');
 const player2Logic = player('computer');
@@ -28,6 +29,7 @@ export default function gameLoop(){
 
     window.addEventListener('click', (event) => {
         attackDOM(event);
+        gameOver();
     })
 };
 
